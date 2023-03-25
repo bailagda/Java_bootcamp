@@ -5,10 +5,10 @@ public class UserIdsGenerator {
     public static final UserIdsGenerator generator = new UserIdsGenerator();
     private UserIdsGenerator() {}
 
-    static UserIdsGenerator getInstance() {
+    public static UserIdsGenerator getInstance() {
         return generator;
     }
-    int generateId() {
+    public int generateId() {
         lastId+= 1;
         return lastId;
     }

@@ -3,7 +3,7 @@ package ex02;
 public class UsersArrayList
     implements UserList{
     private User[] users = new User[10];
-    int usersCount = 0;
+    private int usersCount = 0;
     @Override
     public void AddUser(User newUser) {
         if(usersCount > users.length) {
