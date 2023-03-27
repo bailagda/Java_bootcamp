@@ -9,4 +9,7 @@ public class TransactionNode {
         this.t = t;
     }
 
+    public Transaction getT() {
+        return t;
+    }
 }

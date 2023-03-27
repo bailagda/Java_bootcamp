@@ -11,7 +11,9 @@ public class Transaction {
     private String category;
     private Integer amount;
     
-    Transaction() {
+    Transaction(User sender, User recipient) {
+        this.sender = sender;
+        this.recipient = recipient;
         this.id = UUID.randomUUID();
     }
     public UUID getId() {
@@ -25,7 +27,7 @@ public class Transaction {
     }
     public void setTransferAmount(int amount) {
         if(Math.abs(amount) > sender.getBalance()) {
-            System.err.println("You don't have money");
+            throw new ArithmeticException();
         } else {
             this.amount = amount;
             if(amount < 0) {
@@ -42,7 +44,5 @@ public class Transaction {
             System.out.printf("%s -> %s, %d, %s, transaction %s\n", recipient.getName(),
                     sender.getName(), amount, category, id.toString());
         }
-//        John -> Mike, -500, OUTCOME, transaction ID
     }
-
 }
