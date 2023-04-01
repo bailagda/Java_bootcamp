@@ -1,8 +1,8 @@
-# java_bootcamp
+# Java Bootcamp
 ## Java_bootcamp 21school
 My first encounter with Java Language
 
-### Days\
+### Days
 Day 00: Structures and arrays\
 Day 01: OOP and Collections\
 Day 02: IO and Files\
