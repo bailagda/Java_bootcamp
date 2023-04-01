@@ -1,4 +1,4 @@
-package ex04;
+package ex05;
 
 import java.util.UUID;
 
@@ -49,6 +49,26 @@ public class TransactionsLinkedList
        return arr;
     }
 
+    public void removeById(String uuid) {
+        TransactionNode curr = head;
+        for(int i = 0; i != len; ++i) {
+            if(curr.getT().getId().toString() == uuid) {
+                if(curr.next != null && curr.prev != null) {
+                    curr.prev.next = curr.next;
+                    curr.next.prev = curr.prev;
+                } else if(curr.next != null) {
+                    curr.next.prev = null;
+                } else if(curr.prev != null) {
+                    curr.prev.next = null;
+                }
+                curr.next = curr.prev = null;
+                --len;
+                break;
+            }
+            curr = curr.next;
+        }
+    }
+
     void print() {
         TransactionNode currentNode = head;
         while(currentNode != null) {
@@ -56,4 +76,24 @@ public class TransactionsLinkedList
             currentNode = currentNode.next;
         }
     }
+    void print(int userId) {
+        TransactionNode currentNode = head;
+        while(currentNode != null) {
+            currentNode.getT().printData(userId);
+            currentNode = currentNode.next;
+        }
+    }
+
+    int findTransaction(String uuid) {
+        TransactionNode curr = head;
+        for(int i = 0; i != len; ++i) {
+            if(curr.getT().getId().toString() == uuid) {
+                return curr.getT().getAmount();
+            }
+            curr = curr.next;
+        }
+        return 0;
+    }
+
+
 }

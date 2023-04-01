@@ -1,4 +1,4 @@
-package ex04;
+package ex05;
 
 public class User {
     private final int ID;
@@ -39,8 +39,9 @@ public class User {
     public void printData(){
         System.out.printf("ID:%d, %s, balance = %d\n", ID, name, balance);
     }
-    public void getTransactions() {
-        transactionHistory.print();
+    public TransactionsLinkedList getTransactions() {
+        return(transactionHistory);
+//        transactionHistory.print();
     }
 
 }

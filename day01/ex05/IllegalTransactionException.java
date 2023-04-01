@@ -1,4 +1,4 @@
-package ex04;
+package ex05;
 
 public class IllegalTransactionException extends Throwable {
     @Override

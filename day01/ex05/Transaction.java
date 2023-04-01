@@ -1,4 +1,4 @@
-package ex04;
+package ex05;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -30,6 +30,9 @@ public class Transaction {
     public void setSender(User s){
         sender = s;
     }
+    public int getAmount() {
+        return amount;
+    }
 
     public void setTransferAmount(int amount) throws IllegalTransactionException {
         if(Math.abs(amount) > sender.getBalance()) {
@@ -53,6 +56,19 @@ public class Transaction {
         } else {
             System.out.printf("%s -> %s, %d, %s, transaction %s\n", recipient.getName(),
                     sender.getName(), amount, category, id.toString());
+        }
+    }
+    public void printData(int userId) {
+        if(Objects.equals(category, "INCOME")) {
+            if(recipient.getID() == userId) {
+                System.out.printf("To %s(id = %d) with id = %s, transaction %s\n",
+                        recipient.getName(), userId, amount, id.toString());
+            }
+        } else {
+            if(sender.getID() == userId) {
+                System.out.printf("To %s(id = %d) with id = %s, transaction %s\n",
+                        sender.getName(), userId, amount, id.toString());
+            }
         }
     }
 

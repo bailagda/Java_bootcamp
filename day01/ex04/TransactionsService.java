@@ -16,7 +16,7 @@ public class TransactionsService {
 //    создаются две транзакции типа ДЕБЕТ/КРЕДИТ и
 //    добавляются к получателю и отправителю.
 //    ID обеих транзакций должны совпадать
-    public void doTransaction(int id1, int id2, int sum) {
+    public void doTransaction(int id1, int id2, int sum) throws IllegalTransactionException {
         Transaction t1 = new Transaction(userList.findUserID(id1), userList.findUserID(id2));
         Transaction t2 = new Transaction(t1);
         t1.setTransferAmount(sum);

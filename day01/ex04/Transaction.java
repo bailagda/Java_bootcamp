@@ -31,9 +31,9 @@ public class Transaction {
         sender = s;
     }
 
-    public void setTransferAmount(int amount) {
+    public void setTransferAmount(int amount) throws IllegalTransactionException {
         if(Math.abs(amount) > sender.getBalance()) {
-            throw new ArithmeticException();
+            throw new IllegalTransactionException();
         } else {
             this.amount = amount;
             if(amount < 0) {
