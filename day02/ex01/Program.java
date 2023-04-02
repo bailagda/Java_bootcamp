@@ -34,7 +34,7 @@ public class Program {
         Vector<Integer> B = getVector(dictMerged, dict2);
         System.out.println(A);
         System.out.println(B);
-        double numerator = getNumerator(A, B);
+        double numerator = getSimilarity(A, B);
         System.out.println(numerator);
 
     }
@@ -70,7 +70,7 @@ public class Program {
         return A;
     }
 
-    public static double getNumerator(Vector<Integer> A, Vector<Integer> B) {
+    public static double getSimilarity(Vector<Integer> A, Vector<Integer> B) {
         double numerator = 0;
         double denA = 0;
         double denB = 0;
