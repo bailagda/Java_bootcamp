@@ -1,4 +1,4 @@
-1 https://upload.wikimedia.org/wikipedia/commons/6/6d/Artichoke_J1.jpg
+1 https://oracle-patches.com/images/2021/05/10/Java_threads_large.jpg
 2 https://ethnomir.ru/upload/medialibrary/ff0/goroda_na_volge_kazan_3.jpg
 3 https://static.tildacdn.com/tild6334-3661-4261-b433-396264346332/03_Midjourney_3.jpg
 4 https://github.com/bailagda/java_bootcamp/blob/main/day03/README.md

@@ -1,10 +1,8 @@
 package ex02;
 
 import java.util.Arrays;
-import java.util.FormatterClosedException;
 import java.util.Random;
 
-import static java.lang.Math.random;
 public class Thread_02 {
     static Random rand = new Random();
     static int threadsCount;
@@ -22,17 +20,16 @@ public class Thread_02 {
                 threadsCount =Integer.parseInt(s[1]);
             }
         }
-        MyThread[] arrTreads = new MyThread[threadsCount];
 
+        MyThread[] arrTreads = new MyThread[threadsCount];
         int[] arr = new int[arrSize];
 
         for (int i = 0; i < arrSize; i++) {
             arr[i] = rand.nextInt(30);
-//            System.out.println(arr[i]);
         }
         int countForThread = arrSize/(threadsCount-1);
-
         printSum(arr);
+
         int lastElem = 0;
         for (int i = 0; i < threadsCount; i++) {
             int[] partOfArr = new int[countForThread];
@@ -47,12 +44,10 @@ public class Thread_02 {
             arrTreads[i].start();
             lastElem += start;
         }
-        for (MyThread t:
-             arrTreads) {
+        for (MyThread t: arrTreads) {
             t.join();
             sumOfThreads += t.getSum();
         }
-
         System.out.printf("Sum by threads: %d", sumOfThreads);
     }
 
