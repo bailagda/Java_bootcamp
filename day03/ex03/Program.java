@@ -6,9 +6,8 @@ import java.util.Arrays;
 
 public class Program {
     static private File urlsfile = new File(
-            "C:\\Users\\79127\\Desktop\\java_github\\day03\\ex03\\files_urls.txt");
+            "/Users/bailagda/Desktop/java_bootcamp/day03/ex03/files_urls.txt");
     public static void main(String[] args) throws IOException {
-//        java Program.java --threadsCount=3
         int threadsCount = 0;
         for (String i : args) {
             if (i.contains("--threadsCount=")) {

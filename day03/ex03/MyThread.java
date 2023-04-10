@@ -1,8 +1,8 @@
 package ex03;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -18,17 +18,20 @@ public class MyThread extends Thread{
     public void run(){
         try {
             for(;;) {
-                String fileUrl = reader.readLine();
-                System.out.printf("%s -> %s\n", this.getName(), fileUrl);
-                InputStream in = new URL(fileUrl).openStream();
-                Files.copy(in, Paths.get("C:\\Users\\79127\\Desktop\\java_github\\day03"),
-                        StandardCopyOption.REPLACE_EXISTING);
+                String s = reader.readLine();
+                if (s != null){
+                    String[] fileUrl = s.split(" ");
+                    System.out.printf("%s start download file number %s\n", this.getName(), fileUrl[0]);
+                    BufferedInputStream in = new BufferedInputStream(new URL(fileUrl[1]).openStream());
+                    Files.copy(in, Paths.get("/Users/bailagda/Desktop/java_bootcamp/day03/ex03/test/"),
+                            StandardCopyOption.REPLACE_EXISTING);
+                    System.out.printf("%s finish download file number %s\n", this.getName(), fileUrl[0]);
+                } else {
+                    break;
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-//        try (InputStream in = url.openStream()) {
-//            Files.copy(in, Paths.get(fileName));
-//        }
     }
 }
