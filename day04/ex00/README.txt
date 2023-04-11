@@ -1,0 +1,1 @@
+java ImageToChar -w=. -b=O pathToFile(absolete)
