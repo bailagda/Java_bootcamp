@@ -20,9 +20,20 @@ public class ImageToChar {
 
     public void execute() throws IOException {
         BufferedImage img = ImageIO.read(new File(pathToImage));
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(img, "bmp", baos);
-        byte[] byteArr = baos.toByteArray();
+        for(int x = 0; x < img.getHeight(); ++x) {
+            for(int y = 0; y < img.getWidth(); ++y) {
+                int colorCode = img.getRGB(y, x);
+                printChar(colorCode);
+            }
+            System.out.println('\n');
+        }
+    }
 
+    private void printChar(int colorCode) {
+        if(colorCode == -16777216) {
+            System.out.print(black);
+        } else if (colorCode == -1) {
+            System.out.print(white);
+        }
     }
 }
