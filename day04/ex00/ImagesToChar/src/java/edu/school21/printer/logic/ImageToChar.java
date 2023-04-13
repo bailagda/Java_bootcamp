@@ -1,9 +1,7 @@
 package ImagesToChar.src.java.edu.school21.printer.logic;
 
 import javax.imageio.ImageIO;
-import javax.xml.bind.SchemaOutputResolver;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
