@@ -1,7 +1,12 @@
 Компиляция с переносом файлов .class в папку target:
 javac -d ./target/ ./**/*.java
 
-jar cf images-to-chars-printer.jar target/ex01/ImagesToChar/src/java/edu/school21/printer/app/Program.class - создание архива
+cp -R src/resources target/.- перенос картинки в целевую папку
+
+jar cmf images-to-chars-printer.jar src/manifest.txt ./target. - создание архива
 
 mv images-to-chars-printer.jar ./target/ - перемещение архива в папку таргет
-cp src/resources/* ./target/resources - перенос картинки в целевую папку
+
+Запуск программы из архива:
+
+java -jar images-to-chars-printer.jar
