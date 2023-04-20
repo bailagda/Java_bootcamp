@@ -35,7 +35,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "Chatroom{" +
+        return "User : {" +
                 "ID=" + ID +
                 ", Login='" + Login + '\'' +
                 ", Password=" + Password +
