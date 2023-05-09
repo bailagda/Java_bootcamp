@@ -2,7 +2,9 @@ package edu.school21.chat.repositories;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import edu.school21.chat.models.Chatroom;
 import edu.school21.chat.models.Message;
+import edu.school21.chat.models.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -31,42 +33,22 @@ public class MessagesRepositoryJdbcImpl implements MessagesRepository {
         } catch (SQLException e) {
             System.out.println("Connection failed from createDataSourceConnection: " + e);
         }
-//        try {
-//            Class.forName("org.postgresql.Driver");
-//        } catch (ClassNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
-//        try {
-//            conn = DriverManager.getConnection(url, username, password);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
     }
-
 
     @Override
     public Optional<Message> findById(Long id) {
+        User author = new User(1, "login", "password", null, null);
+        Chatroom room = new Chatroom(1, "room", null, null);
 
         Optional<Message> opM = null;
         try {
-//            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-
             Statement statement = conn.createStatement();
-            String sql = "SELECT * FROM messages_table WHERE id =";
-
-            ResultSet rs = statement.executeQuery(sql + id);
-            while(rs.next()) {
-                System.out.println(rs);
-            }
-            opM = Optional.of(new Message(rs.getInt(1), null, null, null, null));
-
-
-//                Connection con = ds.getConnection();
-//                Statement stmt = con.createStatement();
-//                ResultSet rs = stmt.executeQuery("SELECT * FROM messages_table WHERE id =" + id);
-//                opM = Optional.of(new Message(rs.getInt(1), null, null, null, null));
+            ResultSet rs = statement.executeQuery("SELECT * FROM messages_table WHERE id =" + id);
+            rs.next();
+            opM = Optional.of(new Message(rs.getInt(1), author, room, null, null));
         } catch (Exception e) {
             System.out.println("Connection failed...");
+            System.exit(-1);
         }
         return opM;
     }

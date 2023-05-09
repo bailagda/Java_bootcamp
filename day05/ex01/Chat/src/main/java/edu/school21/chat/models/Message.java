@@ -34,12 +34,12 @@ public class Message {
     @Override
     public String toString() {
         return "Message : {" +
-                "id=" + id +
-                ", author='" + author + '\'' +
-                ", room=" + room +
-                ", text=" + text +
-                ", message_date=" + message_date +
-                '}';
+                "\n id=" + id +
+                ",\n author='" + author + '\'' +
+                ",\n room=" + room +
+                ",\n text=" + text +
+                ",\n message_date=" + message_date +
+                "\n}";
     }
 
     public int getId() {
