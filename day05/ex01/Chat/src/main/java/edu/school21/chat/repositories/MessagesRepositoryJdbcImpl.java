@@ -1,8 +1,13 @@
-package src.main.java.edu.school21.chat.repositories;
+package edu.school21.chat.repositories;
 
-import src.main.java.edu.school21.chat.models.Message;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+import edu.school21.chat.models.Message;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Optional;
 
 public class MessagesRepositoryJdbcImpl implements MessagesRepository {
@@ -12,15 +17,30 @@ public class MessagesRepositoryJdbcImpl implements MessagesRepository {
     static Connection conn;
     static {
         try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            conn = DriverManager.getConnection(url, username, password);
+            HikariConfig config = new HikariConfig();
+            config.setJdbcUrl(url);
+            config.setUsername(username);
+            config.setPassword(password);
+
+            HikariDataSource hikariDataSource = new HikariDataSource(config);
+            if (hikariDataSource.getConnection() == null) {   //hikariDataSource.isClosed()
+                throw new SQLException("Database connection failed");
+            }
+            System.out.println("Database successfully Connection");
+            conn = hikariDataSource.getConnection();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Connection failed from createDataSourceConnection: " + e);
         }
+//        try {
+//            Class.forName("org.postgresql.Driver");
+//        } catch (ClassNotFoundException e) {
+//            throw new RuntimeException(e);
+//        }
+//        try {
+//            conn = DriverManager.getConnection(url, username, password);
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
 

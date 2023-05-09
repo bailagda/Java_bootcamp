@@ -1,4 +1,4 @@
-package src.main.java.edu.school21.chat.models;
+package edu.school21.chat.models;
 
 import java.util.Date;
 import java.util.Objects;
