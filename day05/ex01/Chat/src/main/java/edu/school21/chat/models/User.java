@@ -41,7 +41,7 @@ public class User {
                 ", Password=" + Password +
                 ", rooms=" + rooms +
                 ", socializes=" + socializes +
-                '}';
+                "}";
     }
 
     public int getID() {

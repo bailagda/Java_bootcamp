@@ -34,11 +34,11 @@ public class Message {
     @Override
     public String toString() {
         return "Message : {" +
-                "\n id=" + id +
-                ",\n author='" + author + '\'' +
-                ",\n room=" + room +
-                ",\n text=" + text +
-                ",\n message_date=" + message_date +
+                "\n id = " + id +
+                ",\n author = " + author +
+                ",\n room = " + room +
+                ",\n text = " + text +
+                ",\n message_date = " + message_date +
                 "\n}";
     }
 

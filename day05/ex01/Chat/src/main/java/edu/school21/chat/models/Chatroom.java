@@ -33,8 +33,8 @@ public class Chatroom {
 
     @Override
     public String toString() {
-        return "Chatroom{" +
-                "id=" + id +
+        return "Chatroom : {" +
+                "ID=" + id +
                 ", name='" + name + '\'' +
                 ", owner=" + owner +
                 ", messages=" + messages +

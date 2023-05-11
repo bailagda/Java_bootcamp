@@ -37,14 +37,14 @@ public class MessagesRepositoryJdbcImpl implements MessagesRepository {
 
     @Override
     public Optional<Message> findById(Long id) {
-        User author = new User(1, "login", "password", null, null);
-        Chatroom room = new Chatroom(1, "room", null, null);
-
         Optional<Message> opM = null;
         try {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM messages_table WHERE id =" + id);
             rs.next();
+
+            User author = new User(rs.getInt(2), "login", "password", null, null);
+            Chatroom room = new Chatroom(rs.getInt(3), "room", null, null);
             opM = Optional.of(new Message(rs.getInt(1), author, room, null, null));
         } catch (Exception e) {
             System.out.println("Connection failed...");
