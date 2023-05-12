@@ -6,12 +6,8 @@ import edu.school21.chat.models.User;
 import edu.school21.chat.repositories.MessagesRepository;
 import edu.school21.chat.repositories.MessagesRepositoryJdbcImpl;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
 import java.sql.SQLException;
-import java.util.Optional;
 
 public class Program {
     public static void main(String[] args) throws SQLException {

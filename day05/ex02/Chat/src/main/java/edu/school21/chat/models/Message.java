@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Message {
-    private final Long id;
+    private Long id;
     private User author;
     private Chatroom room;
     private String text;
@@ -65,6 +65,7 @@ public class Message {
     public LocalDateTime getMessage_date() {
         return message_date;
     }
+    public void setId(Long id) { this.id = id; }
 
     public void setAuthor(User author) {
         this.author = author;

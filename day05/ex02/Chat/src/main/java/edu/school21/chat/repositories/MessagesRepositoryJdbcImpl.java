@@ -72,10 +72,12 @@ public class MessagesRepositoryJdbcImpl implements MessagesRepository {
             st3.setLong(1, message.getAuthor().getID());
             st3.setLong(2, message.getRoom().getId());
             st3.setString(3, message.getText());
-            st3.setDate(4, Date.valueOf(message.getMessage_date().toString()));
-            // insert into table(c1, c2, c3, c4) values (author, room, "text", date)  (author_id, room_id, test, message_date)
-            st3.executeQuery();
+            st3.setTimestamp(4, java.sql.Timestamp.valueOf(message.getMessage_date()));
+            st3.execute();
 
+            ResultSet rs = st1.executeQuery("SELECT * FROM messages_table ORDER BY id DESC LIMIT 1");
+            rs.next();
+            message.setId(rs.getLong(1));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
