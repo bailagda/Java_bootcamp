@@ -7,7 +7,10 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class EmbeddedDataSourceTest {
     private DataSource ds;
@@ -20,6 +23,11 @@ public class EmbeddedDataSourceTest {
 
     @Test
     void testDataBase() throws SQLException {
-        Assertions.assertNotNull(ds.getConnection());
+        Connection con = ds.getConnection();
+        Statement st1 = con.createStatement();
+        ResultSet rs = st1.executeQuery("select * from product");
+        rs.next();
+        rs.next();
+        Assertions.assertNotNull(rs.getString(2));
     }
 }
