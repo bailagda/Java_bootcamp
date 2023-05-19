@@ -1,5 +1,8 @@
 package edu.school21.models;
 
+
+import java.util.Objects;
+
 public class Product {
     int id;
     String name;
@@ -8,6 +11,27 @@ public class Product {
         this.id = id;
         this.name = name;
         this.price = price;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price);
+    }
+
+    @Override
+    public String toString() {
+        return "Product: {" +
+                "id = " + id +
+                ", name = " + name +
+                ", price = " + price;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj) return true;
+        Product tmp = (Product) obj;
+        if((tmp.id == this.id) && (tmp.name == this.name) && (tmp.price == this.price)) return true;
+        else return false;
     }
 
     public int getId() {
@@ -21,4 +45,6 @@ public class Product {
     public String getName() {
         return name;
     }
+
+
 }
