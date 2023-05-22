@@ -23,15 +23,15 @@ public class Product {
         return "Product: {" +
                 "id = " + id +
                 ", name = " + name +
-                ", price = " + price;
+                ", price = " + price +
+                "} ";
     }
 
     @Override
     public boolean equals(Object obj) {
         if(this == obj) return true;
         Product tmp = (Product) obj;
-        if((tmp.id == this.id) && (tmp.name == this.name) && (tmp.price == this.price)) return true;
-        else return false;
+        return (tmp.id == this.id) && (Objects.equals(tmp.name, this.name)) && (tmp.price == this.price);
     }
 
     public int getId() {
