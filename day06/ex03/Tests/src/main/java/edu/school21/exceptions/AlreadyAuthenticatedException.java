@@ -4,4 +4,5 @@ public class AlreadyAuthenticatedException extends Throwable {
     public AlreadyAuthenticatedException(){
         super("------> User already registered <------");
     }
+
 }

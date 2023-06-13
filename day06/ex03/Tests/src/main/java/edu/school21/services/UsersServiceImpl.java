@@ -38,7 +38,7 @@ public class UsersServiceImpl implements UsersRepository{
             statement.setString(1, login);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
-                user = new User(rs.getInt("identifier"),
+                user = new User(rs.getLong("identifier"),
                         rs.getString("login"),
                         rs.getString("password"),
                         rs.getBoolean("status"));
@@ -69,6 +69,7 @@ public class UsersServiceImpl implements UsersRepository{
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+
         }
     }
 }
